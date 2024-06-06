@@ -1,3 +1,6 @@
 alert('Hello world');
 let favoritefood = "pasta"
-document.write(minServings);
+let serving = 10;
+let doubleServing = serving * 2;
+let minServing = (doubleServing * 2) - (serving / 2);
+document.write(minServing);
