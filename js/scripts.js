@@ -1,6 +1,6 @@
-alert('Hello world');
-let favoritefood = "pasta"
-let serving = 10;
-let doubleServing = serving * 2;
-let minServing = (doubleServing * 2) - (serving / 2);
-document.write(minServing);
+let pokemonList = [
+    {id: 1, name: 'chamander', type: ['fire'] },
+    {id: 2, name: 'charmeleon', type: ['fire']},
+    {id: 3, name: 'charizard', type: ['fire','flying']}
+];
+
