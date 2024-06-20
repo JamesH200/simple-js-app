@@ -1,30 +1,34 @@
-let pokemonList = [
-    
-    {
-        id: 1,
-        name: 'Charmeleon',
-        type: ['fire'],
-        height: 1.1
-    },
-    {
-        id: 2, 
-        name: 'Charizard',
-        type: ['fire', 'flying'],
-        height: 1.7
-    },
-    {
-        id: 3, 
-        name: 'Onix',
-        type: ['rock', 'ground'],
-        height: 8.8
-    },
-];
-for (let i = 0; i < pokemonList.length; i++) {
-    let pokemon = pokemonList[i];
-    document.write(pokemon.name + " (height: " + pokemon.height + ")");
-    if (pokemon.height > 8) {
-        document.write(" - Wow, that\'s Big!");
+// Wrap pokemonList array in IIFE
+let pokemonRepository = (function () {
+    // pokemonList array
+    let pokemonList = [
+        { name: "Charmeleon", type: ["Fire"], height: 1.1 },
+        { name: "Charizard", type: ["Fire", "Flying"], height: 1.7 },
+        { name: "Onix", type: ["Rock", "Ground"], height: 8.8 },
+        { name: "Bulbasaur", type: ["Grass", "Poison"], height: 0.7 }
+    ];
+
+    // Function to return all items
+    function getAll() {
+        return pokemonList;
     }
-    document.write("</br>");
-};
+
+    // Function to add a single item
+    function add(pokemon) {
+        pokemonList.push(pokemon);
+    }
+
+    // Return an object with the public functions
+    return {
+        getAll: getAll,
+        add: add
+    };
+})();
+
+// Update forEach loop to use pokemonRepository.getAll()
+pokemonRepository.getAll().forEach(function (pokemon) {
+    console.log(pokemon.name);
+});
+
+
 
