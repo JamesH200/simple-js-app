@@ -8,12 +8,12 @@ let pokemonRepository = (function () {
         { name: "Bulbasaur", type: ["Grass", "Poison"], height: 0.7 }
     ];
 
-    // Function to return all items
+    // return all items to functions
     function getAll() {
         return pokemonList;
     }
 
-    // Function to add a single item
+    // add a single item to functions 
     function add(pokemon) {
         pokemonList.push(pokemon);
     }
