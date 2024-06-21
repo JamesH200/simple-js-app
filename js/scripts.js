@@ -1,43 +1,36 @@
-
 let pokemonRepository = (function () {
+    let pokemonList = [
+        {
+            name: 'Charmeleon',
+            type: ['fire'],
+            height: 1.1
+        },
+        {
+            name: 'Charizard',
+            type: ['fire', 'flying'],
+            height: 1.7
+        },
+        {
+            name: 'Onix',
+            type: ['rock', 'ground'],
+            height: 8.8
+        },
+    ];
 
-let pokemonList = [
+    function getAll() {
+        return pokemonList;
+    }
 
-    {
-    
-        name: 'Charmeleon',
-        type: ['fire'],
-        height: 1.1
-    },
-    {
-        
-        name: 'Charizard',
-        type: ['fire', 'flying'],
-        height: 1.7
-    },
-    {
-        
-        name: 'Onix',
-        type: ['rock', 'ground'],
-        height: 8.8
-    },
-]
+    function add(pokemon) {
+        pokemonList.push(pokemon);
+    }
 
-function getAll () {
-    return pokemonList;
-}
+    return {
+        getAll: getAll,
+        add: add
+    };
+})();
 
-function add (pokemon) {
-    pokemonList.push(pokemon);
-}
-
-return{
-    getAll: getAll,
-    add: add
-}
-
-})()
-
-console.log(pokemonRepository.getAll())
-
+// pokemonList array using the getAll function
+console.log(pokemonRepository.getAll());
 
