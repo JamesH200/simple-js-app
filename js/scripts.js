@@ -19,23 +19,21 @@ let pokemonRepository = (function () {
             type: ['rock', 'ground'],
             height: 8.8
         }
-    ];
+    ]
 
-    function getAll() {
-        return pokemonList;
-    }
-
-    function add(pokemon) {
+    let pokemonRepository = (function () {
+        let pokemonList = []; 
+      
+        return {
+          add: function(pokemon) {
             pokemonList.push(pokemon);
-
-    
-        }
-
-    return {
-        getAll: getAll,
-        add: add
-    }
-
-})()
-console.log(pokemonRepository.getAll())
-
+          },
+          getAll: function() {
+            return pokemonList;
+          }
+        };
+      })();
+      
+      console.log(pokemonRepository.getAll()); 
+      pokemonRepository.add({ name: 'Onix' });
+      console.log(pokemonRepository.getAll());
