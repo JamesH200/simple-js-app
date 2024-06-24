@@ -1,36 +1,29 @@
-let pokemonRepository = (function () {
-    let pokemonList = [
-        {
-            name: 'Charmeleon',
-            type: ['fire'],
-            height: 1.1
-        },
-        {
-            name: 'Charizard',
-            type: ['fire', 'flying'],
-            height: 1.7
-        },
-        {
-            name: 'Onix',
-            type: ['rock', 'ground'],
-            height: 8.8
-        },
-    ];
-
-    function getAll() {
-        return pokemonList;
+let pokemonList = [
+    {
+        id: 1, 
+        name: 'Chanmander',
+        type: ['fire'],
+        height: 1.1
+    },
+    { 
+        id: 2,
+        name: 'Charizard',
+        type: ['fire', 'flying'],
+        height: 1.7
+    },
+    { 
+        id: 3,
+        name: 'Onix',
+        type: ['rock', 'ground'],
+        height: 8.8
     }
-
-    function add(pokemon) {
-        pokemonList.push(pokemon);
+];
+for (let i = 0; i < pokemonList.length; i++) {
+    let pokemon = pokemonList[i];
+    document.write(pokemon.name + " (height: " + pokemon.height + ")");
+    if (pokemon.height > 6) {
+        document.write(" - Wow, that\'s Big!");
     }
-
-    return {
-        getAll: getAll,
-        add: add
-    };
-})();
-
-// pokemonList array using the getAll function
-console.log(pokemonRepository.getAll());
+    document.write("</br>");
+};
 
