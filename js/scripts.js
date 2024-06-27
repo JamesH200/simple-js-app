@@ -47,29 +47,14 @@ let pokemonRepository = (function () {
     }
 
     // Add a Pokemon to the list
-    function add(pokemon) {
-        let evolve = transform(pokemon);
-        let lenght = Object.evolve(pokemon).length; // Check lenght of the object
-        // Check if argument is an object
+    function add(pokemon) { 
         if (typeof pokemon !== 'object') {
             console.log('Pokemon is not an Object!');
-        } else if (evolve === lenght) {
-            pokemonList.push(pokemon);
         } else {
             console.log('Devolve');
         }
     }
-    function evolve(pokemon) {
-        let i = 0;
-        Object.evolve(pokemon).forEach(function (evolve) {
-            if (evolve == 'name' || evolve == 'height' || evolve == 'types') {
-                i++;
-            } else {
-                i--;
-            }
-        });
-        return i;
-    }
+   
 
     return {
         getAll: getAll,
