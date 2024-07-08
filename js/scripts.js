@@ -42,37 +42,41 @@ let pokemonRepository = (function () {
     }
 
     function add(pokemon) {
-        if (typeof pokemon !== 'object' || !pokemon.name || !pokemon.height || !pokemon.types) {
-            console.log('Invalid Pokémon format!');
-        } else {
+        if (typeof pokemon === 'object' && 'name' in pokemon && 'height' in pokemon && 'types' in pokemon) {
             pokemonList.push(pokemon);
+        } else {
+            console.log('Invalid Pokémon format!');
         }
+    }
+
+    function addListItem(pokemon) {
+        let mainElement = document.getElementById('pokemon-list');
+        let listItem = document.createElement('div');
+        let button = document.createElement('button');
+
+        button.innerText = pokemon.name;
+        button.classList.add('pokemon-button');
+
+        listItem.appendChild(button);
+        mainElement.appendChild(listItem);
+
+        button.addEventListener('click', function () {
+            showDetails(pokemon);
+        });
+    }
+
+    function showDetails(pokemon) {
+        console.log(pokemon);
     }
 
     return {
         getAll: getAll,
         add: add,
+        addListItem: addListItem
     };
 })();
 
-// Function to create and display the Pokémon list
-function displayPokemonList(pokemon) {
-    let mainElement = document.getElementById('pokemon-list');
-    let pokemonElement = document.createElement('div');
-
-    pokemonElement.classList.add('pokemon-item');
-    pokemonElement.textContent = pokemon.name + ' (height: ' + pokemon.height + ')';
-
-    if (pokemon.height > 1.7) {
-        pokemonElement.textContent += " - Wow, that's big!";
-    }
-
-    pokemonElement.addEventListener('click', function() {
-        console.log(pokemon.name + ' (height: ' + pokemon.height + ')');
-    });
-
-    mainElement.appendChild(pokemonElement);
-}
-
-// Display all Pokémon
-pokemonRepository.getAll().forEach(displayPokemonList);
+// Add each Pokémon to the list with a button
+pokemonRepository.getAll().forEach(function (pokemon) {
+    pokemonRepository.addListItem(pokemon);
+});
