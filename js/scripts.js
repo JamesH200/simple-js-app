@@ -42,7 +42,11 @@ let pokemonRepository = (function () {
     }
 
     function add(pokemon) {
-        pokemonList.push(pokemon)
+        if (typeof pokemon === 'object' && 'name' in pokemon && 'height' in pokemon && 'types' in pokemon) {
+            pokemonList.push(pokemon);
+        } else {
+            console.log(pokemon.name);
+        }
     }
 
     function addListItem(pokemon) {
