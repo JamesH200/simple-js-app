@@ -1,7 +1,5 @@
 let pokemonRepository = (function () {
-    let pokemonList = [];
-    pokemonList = [
-
+    let pokemonList = [
         {
             name: 'Onix',
             height: 8.8,
@@ -39,22 +37,17 @@ let pokemonRepository = (function () {
         },
     ];
 
-    document.write('<main>');
-
-    // Get all Pokemons
     function getAll() {
         return pokemonList;
     }
 
-    // Add a Pokemon to the list
-    function add(pokemon) { 
-        if (typeof pokemon !== 'object') {
-            console.log('Pokemon is not an Object!');
+    function add(pokemon) {
+        if (typeof pokemon !== 'object' || !pokemon.name || !pokemon.height || !pokemon.types) {
+            console.log('Invalid Pokémon format!');
         } else {
-            console.log('Devolve');
+            pokemonList.push(pokemon);
         }
     }
-   
 
     return {
         getAll: getAll,
@@ -62,34 +55,24 @@ let pokemonRepository = (function () {
     };
 })();
 
-// Print all Pokemons + height
-function printPokemonList(pokemon) {
-    document.write(pokemon.name + ' (height: ' + pokemon.height + ') ');
+// Function to create and display the Pokémon list
+function displayPokemonList(pokemon) {
+    let mainElement = document.getElementById('pokemon-list');
+    let pokemonElement = document.createElement('div');
+
+    pokemonElement.classList.add('pokemon-item');
+    pokemonElement.textContent = pokemon.name + ' (height: ' + pokemon.height + ')';
+
     if (pokemon.height > 1.7) {
-        document.write("Wow, that's big!" + '<br>');
-    } else {
-        document.write('<br>');
+        pokemonElement.textContent += " - Wow, that's big!";
     }
+
+    pokemonElement.addEventListener('click', function() {
+        console.log(pokemon.name + ' (height: ' + pokemon.height + ')');
+    });
+
+    mainElement.appendChild(pokemonElement);
 }
 
-// Log Pokemons to console
-function logPokemonList(pokemon) {
-    console.log(pokemon.name + ' (height: ' + pokemon.height + ') ');
-}
-
-function filterByName(pokemonName) {
-    return pokemonRepository
-        .getAll()
-        .filter((name) => name.name.includes(pokemonName));
-}
-
-// Log pokemonRepository
-console.log(pokemonRepository.getAll());
-
-pokemonRepository.add({ name: 'Gyarados', height: 6.5, types: ['Water', 'Flying'] });
-
-pokemonRepository.getAll().forEach(printPokemonList);
-
-filterByName('u').forEach(logPokemonList);
-
-document.write('</main>');
+// Display all Pokémon
+pokemonRepository.getAll().forEach(displayPokemonList);
