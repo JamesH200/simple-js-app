@@ -1,13 +1,19 @@
-<!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-  <title>Simple JS App</title>
-</head>
-<body>
-  <main id="pokemon-list"></main>
-  <script src="js/scripts.js"></script>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Simple JS App</title>
+    <link href="./css/reset.css" rel="stylesheet"/>
+    <link href="./css/styles.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Anta&family=PT+Sans+Narrow:wght@400;700&family=Protest+Revolution&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <h1>pokedex</h1>
+    <div id="loading-message" style="display: none;">Loading...</div>
+    <ul class="pokemon-list"></ul>
+    <script src="./js/promise-polyfill.js"></script>
+    <script src="./js/fetch-polyfill.js"></script>
+    <script src="./js/scripts.js"></script>
+  </body>
+  
 </html>
