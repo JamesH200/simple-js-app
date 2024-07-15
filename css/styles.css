@@ -23,7 +23,7 @@ ul {
 /* Button Styles */
 .pokemon-info {
    font-size: 32px;
-   background-color: #f4fff4;
+   background-color: #1db4cb;
    border-radius: 5%;
    margin: 3px;
    padding: 5px;
@@ -52,7 +52,7 @@ ul {
 .modal-dialog {
   margin: 15% auto;
   padding: 20px;
-  border: 1px solid #888;
+  border: 1px solid #150032;
   width: 80%;
   max-width: 600px;
 }
