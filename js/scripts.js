@@ -13,9 +13,10 @@ let pokemonRepository = (function () {
     function addListItem(pokemon) {
         let pokemonList = document.querySelector('.pokemon-list');
         let listItem = document.createElement('li');
+        listItem.classList.add('list-group-item');
         let button = document.createElement('button');
         button.innerText = pokemon.name;
-        button.classList.add('pokemon-info');
+        button.classList.add('btn', 'btn-primary', 'pokemon-info');
         listItem.appendChild(button);
         pokemonList.appendChild(listItem);
         button.addEventListener('click', function () {
@@ -59,7 +60,6 @@ let pokemonRepository = (function () {
     }
 
     function showModal(pokemon) {
-        let modal = document.querySelector('#pokemon-modal');
         let modalTitle = document.querySelector('#pokemon-title');
         let modalImage = document.querySelector('#pokemon-image');
         let modalHeight = document.querySelector('#pokemon-height');
@@ -68,27 +68,7 @@ let pokemonRepository = (function () {
         modalImage.src = pokemon.imageUrl;
         modalHeight.innerText = `Height: ${pokemon.height}`;
 
-        modal.style.display = 'block';
-
-        let closeButton = modal.querySelector('.close');
-        closeButton.addEventListener('click', hideModal);
-
-        window.addEventListener('click', function(event) {
-            if (event.target === modal) {
-                hideModal();
-            }
-        });
-
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape' && modal.style.display === 'block') {
-                hideModal();
-            }
-        });
-    }
-
-    function hideModal() {
-        let modal = document.querySelector('#pokemon-modal');
-        modal.style.display = 'none';
+        $('#pokemon-modal').modal('show');
     }
 
     return {
@@ -103,6 +83,6 @@ let pokemonRepository = (function () {
 
 pokemonRepository.loadList().then(function () {
     pokemonRepository.getAll().forEach(function (pokemon) {
-        pokemonRepository.addListItem(pokemon)
+        pokemonRepository.addListItem(pokemon);
     });
 });
