@@ -1,9 +1,13 @@
 /* Global Styles */
 body {
-    display: grid;
-    justify-content: center;
     background: url('https://img.freepik.com/free-vector/green-football-field-background_1419-1916.jpg') no-repeat center center fixed;
     background-size: cover;
+    color: white;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: rgba(0, 0, 0, 0.5); /* Slightly transparent background */
 }
 
 /* Header Styles */
@@ -14,17 +18,15 @@ h1 {
 }
 
 /* List Styles */
-ul {
+#pokemonContainer {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 10px;
     list-style: none;
-    margin: auto;
     padding: 0;
 }
 
-/* List Item Styles */
-li {
+#pokemonContainer .col {
     background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -37,7 +39,7 @@ li {
     h1 {
         font-size: 20px;
     }
-    ul {
+    #pokemonContainer {
         grid-template-columns: repeat(1, 1fr);
     }
 }
@@ -46,7 +48,19 @@ li {
     h1 {
         font-size: 30px;
     }
-    ul {
+    #pokemonContainer {
         grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media all and (min-width: 769px) and (max-width: 992px) {
+    #pokemonContainer {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media all and (min-width: 993px) {
+    #pokemonContainer {
+        grid-template-columns: repeat(5, 1fr);
     }
 }
