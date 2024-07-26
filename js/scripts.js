@@ -1,88 +1,44 @@
-let pokemonRepository = (function () {
-    let pokemons = [];
-    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=25';
+document.addEventListener('DOMContentLoaded', function() {
+    const pokemonContainer = document.getElementById('pokemonContainer');
+    const searchField = document.getElementById('searchField');
+    const searchButton = document.getElementById('searchButton');
+    const clearSearchButton = document.getElementById('clearSearchButton');
+    const noPokemonsFound = document.getElementById('noPokemonsFound');
 
-    function add(pokemon) {
-        pokemons.push(pokemon)
-    }
-
-    function getAll() {
-        return pokemons;
-    }
-
-    function addListItem(pokemon) {
-        let pokemonList = document.querySelector('.pokemon-list');
-        let listItem = document.createElement('li');
-        listItem.classList.add('list-group-item');
-        let button = document.createElement('button');
-        button.innerText = pokemon.name;
-        button.classList.add('btn', 'btn-primary', 'pokemon-info');
-        listItem.appendChild(button);
-        pokemonList.appendChild(listItem);
-        button.addEventListener('click', function () {
-            showDetails(pokemon);
-        });
-    }
-
-    function showDetails(pokemon) {
-        loadDetails(pokemon).then(function () {
-            showModal(pokemon);
-        });
-    }
-
-    function loadList() {
-        return fetch(apiUrl).then(function (response) {
-            return response.json();
-        }).then(function (json) {
-            json.results.forEach(function (item) {
-                let pokemon = {
-                    name: item.name,
-                    detailsUrl: item.url
-                };
-                add(pokemon);
-            });
-        }).catch(function (e) {
-            console.error(e);
-        })
-    }
-
-    function loadDetails(item) {
-        let url = item.detailsUrl;
-        return fetch(url).then(function (response) {
-            return response.json();
-        }).then(function (details) {
-            item.imageUrl = details.sprites.front_default;
-            item.height = details.height;
-            item.types = details.types;
-        }).catch(function (e) {
-            console.error(e);
-        })
-    }
-
-    function showModal(pokemon) {
-        let modalTitle = document.querySelector('#pokemon-title');
-        let modalImage = document.querySelector('#pokemon-image');
-        let modalHeight = document.querySelector('#pokemon-height');
-
-        modalTitle.innerText = pokemon.name;
-        modalImage.src = pokemon.imageUrl;
-        modalHeight.innerText = `Height: ${pokemon.height}`;
-
-        $('#pokemon-modal').modal('show');
-    }
-
-    return {
-        add: add,
-        getAll: getAll,
-        addListItem: addListItem,
-        showDetails: showDetails,
-        loadList: loadList,
-        loadDetails: loadDetails
-    };
-})();
-
-pokemonRepository.loadList().then(function () {
-    pokemonRepository.getAll().forEach(function (pokemon) {
-        pokemonRepository.addListItem(pokemon);
+    searchButton.addEventListener('click', function(event) {
+        event.preventDefault();
+        const query = searchField.value.toLowerCase().trim();
+        if (query) {
+            searchPokemon(query);
+        }
     });
+
+    clearSearchButton.addEventListener('click', function(event) {
+        event.preventDefault();
+        searchField.value = '';
+        pokemonContainer.innerHTML = '';
+        noPokemonsFound.innerHTML = '';
+    });
+
+    function searchPokemon(query) {
+        fetch(`https://pokeapi.co/api/v2/pokemon/${query}`)
+            .then(response => response.json())
+            .then(data => {
+                displayPokemon(data);
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+                noPokemonsFound.innerHTML = `<p>No Pokémon found</p>`;
+            });
+    }
+
+    function displayPokemon(pokemon) {
+        pokemonContainer.innerHTML = `
+            <div class="col">
+                <h5>${pokemon.name}</h5>
+                <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}" class="img-fluid">
+                <p>Height: ${pokemon.height}</p>
+            </div>
+        `;
+    }
 });

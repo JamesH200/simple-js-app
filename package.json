@@ -1,0 +1,17 @@
+{
+    "name": "pokemon-app",
+    "version": "1.0.0",
+    "description": "A simple Pokémon app",
+    "scripts": {
+        "lint": "eslint .",
+        "prettier": "prettier --write ."
+    },
+    "devDependencies": {
+        "eslint": "^7.32.0",
+        "prettier": "^2.3.2"
+    },
+    "dependencies": {
+        "fetch-polyfill": "^1.0.0",
+        "promise-polyfill": "^8.2.0"
+    }
+}
