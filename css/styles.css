@@ -2,18 +2,34 @@
 body {
     display: grid;
     justify-content: center;
+    background: url('https://img.freepik.com/free-vector/green-football-field-background_1419-1916.jpg') no-repeat center center fixed;
+    background-size: cover;
 }
 
 /* Header Styles */
 h1 {
     font-size: 40px;
+    text-align: center;
+    color: white;
 }
 
 /* List Styles */
 ul {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
     list-style: none;
     margin: auto;
-    padding: 0px;
+    padding: 0;
+}
+
+/* List Item Styles */
+li {
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
 }
 
 /* Responsive Styles */
@@ -21,10 +37,16 @@ ul {
     h1 {
         font-size: 20px;
     }
+    ul {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
 
 @media all and (min-width: 500px) and (max-width: 768px) {
     h1 {
         font-size: 30px;
+    }
+    ul {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
