@@ -1,37 +1,19 @@
 /* Global Styles */
 body {
-    background: url('https://img.freepik.com/free-vector/green-football-field-background_1419-1916.jpg') no-repeat center center fixed;
-    background-size: cover;
-    color: white;
-}
-
-/* Navbar Styles */
-.navbar {
-    background-color: rgba(0, 0, 0, 0.5); /* Slightly transparent background */
+    display: grid;
+    justify-content: center;
 }
 
 /* Header Styles */
 h1 {
     font-size: 40px;
-    text-align: center;
-    color: white;
 }
 
 /* List Styles */
-#pokemonContainer {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
+ul {
     list-style: none;
-    padding: 0;
-}
-
-#pokemonContainer .col {
-    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 10px;
-    text-align: center;
+    margin: auto;
+    padding: 0px;
 }
 
 /* Responsive Styles */
@@ -39,28 +21,10 @@ h1 {
     h1 {
         font-size: 20px;
     }
-    #pokemonContainer {
-        grid-template-columns: repeat(1, 1fr);
-    }
 }
 
 @media all and (min-width: 500px) and (max-width: 768px) {
     h1 {
         font-size: 30px;
-    }
-    #pokemonContainer {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media all and (min-width: 769px) and (max-width: 992px) {
-    #pokemonContainer {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-
-@media all and (min-width: 993px) {
-    #pokemonContainer {
-        grid-template-columns: repeat(5, 1fr);
     }
 }
