@@ -1,34 +1,94 @@
-/* Global Styles */
+* {
+  line-height: 2;
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+.pokemon-name {
+  opacity: 50%;
+  font-weight: 700;
+}
+.modal {
+  display: none;
+}
+.modal-content {
+  margin: auto;
+  display: inline-block;
+  box-sizing: border-box;
+  background: #fff;
+  padding: 15px;
+  width: 100%;
+  max-width: 700px;
+  text-align: left;
+}
+.modal-close {
+  float: right;
+  border: 0;
+  background: none;
+  color: #777;
+  text-decoration: underline;
+}
+.show-details {
+  background: #000;
+  width: 80%;
+  margin: auto;
+  font-weight: 700;
+}
+.show-details:hover {
+  opacity: 50%;
+}
+
+:root {
+  --background-color: #f7f4f4;
+  --text-color: #0d0d0d;
+  --primary-color: #1f83d0;
+  --secondary-color: #990b9e;
+  --tertiary-color: #2623d5;
+  --quaternary-color: #420565;
+  --button-background-color: #7a7575;
+  --button-text-color: #ffffff;
+  --button-hover-color: #767676;
+  --overlay-background-color: #6849935b;
+  --overlay-text-color: #eef2f5;
+  --gradient-start: #edc655;
+  --gradient-mid: #fcffad;
+  --gradient-end: #f76414;
+  --grid-item-background: #3d58b954;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+  --font-size-base: 16px;
+}
+
 body {
-    display: grid;
-    justify-content: center;
-    background: rgba(0, 0, 0, .65) url('../img/mystical_space_background.jpg');
-    background-size: cover;
-    background-blend-mode: darken;
-    color: white;
+  background: var(--background-color);
+  color: var(--text-color);
+  font-family: "anta";
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
 }
 
-/* Header Styles */
-h1 {
-    font-size: 40px;
+body {
+  background: linear-gradient(
+    -45deg,
+    var(--primary-color),
+    var(--secondary-color),
+    var(--tertiary-color),
+    var(--quaternary-color)
+  );
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  padding: 20px;
 }
 
-/* List Styles */
-ul {
-    list-style: none;
-    margin: auto;
-    padding: 0px;
-}
-
-/* Responsive Styles */
-@media all and (max-width: 500px) {
-    h1 {
-        font-size: 20px;
-    }
-}
-
-@media all and (min-width: 500px) and (max-width: 768px) {
-    h1 {
-        font-size: 30px;
-    }
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
