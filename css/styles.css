@@ -2,6 +2,10 @@
 body {
     display: grid;
     justify-content: center;
+    background: rgba(0, 0, 0, .65) url('../img/mystical_space_background.jpg');
+    background-size: cover;
+    background-blend-mode: darken;
+    color: white;
 }
 
 /* Header Styles */
