@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"name": "simple-js-app",
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "simple-js-app"
+	}
+}
